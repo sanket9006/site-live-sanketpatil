@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>RR : Newrelic</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="333e31ec-f0d5-42ba-9352-072aacde7853" class="page sans"><header><h1 class="page-title">RR : Newrelic</h1><p class="page-description"></p></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesNumber"><path d="M2.4834 10.9902H4.33594L3.75488 13.8887C3.74121 13.9639 3.72754 14.0664 3.72754 14.1416C3.72754 14.5381 3.99414 14.7637 4.39746 14.7637C4.81445 14.7637 5.09473 14.5449 5.18359 14.1143L5.80566 10.9902H8.79297L8.21191 13.8887C8.19824 13.9639 8.18457 14.0664 8.18457 14.1416C8.18457 14.5381 8.45117 14.7637 8.85449 14.7637C9.27148 14.7637 9.55176 14.5449 9.63379 14.1143L10.2627 10.9902H12.4502C12.9287 10.9902 13.2432 10.6758 13.2432 10.2109C13.2432 9.8418 12.9902 9.56836 12.6006 9.56836H10.5498L11.2129 6.28711H13.3662C13.8379 6.28711 14.1523 5.96582 14.1523 5.50098C14.1523 5.13184 13.9062 4.8584 13.5098 4.8584H11.5L12.0195 2.27441C12.0264 2.21973 12.0469 2.11035 12.0469 2.01465C12.0469 1.625 11.7666 1.39258 11.3633 1.39258C10.9053 1.39258 10.6797 1.63867 10.5977 2.05566L10.0303 4.8584H7.04297L7.5625 2.27441C7.57617 2.21973 7.58984 2.11035 7.58984 2.01465C7.58984 1.625 7.30957 1.39258 6.91309 1.39258C6.44824 1.39258 6.21582 1.63867 6.13379 2.05566L5.57324 4.8584H3.54297C3.06445 4.8584 2.75 5.18652 2.75 5.65137C2.75 6.03418 3.00293 6.28711 3.39258 6.28711H5.28613L4.62305 9.56836H2.63379C2.15527 9.56836 1.84082 9.89648 1.84082 10.3613C1.84082 10.7373 2.09375 10.9902 2.4834 10.9902ZM6.09277 9.56836L6.75586 6.28711H9.74316L9.08008 9.56836H6.09277Z"></path></svg></span>Number</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Isues</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Occurances</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesUrl"><path d="M7.69922 10.8945L8.73828 9.84863C7.91797 9.77344 7.34375 9.51367 6.91992 9.08984C5.76465 7.93457 5.76465 6.29395 6.91309 5.14551L9.18262 2.87598C10.3379 1.7207 11.9717 1.7207 13.127 2.87598C14.2891 4.04492 14.2822 5.67188 13.1338 6.82031L11.958 7.99609C12.1768 8.49512 12.2451 9.10352 12.1289 9.62988L14.0908 7.6748C15.7725 6 15.7793 3.62109 14.084 1.92578C12.3887 0.223633 10.0098 0.237305 8.33496 1.91211L5.95605 4.29785C4.28125 5.97266 4.26758 8.35156 5.96289 10.0469C6.36621 10.4434 6.90625 10.7441 7.69922 10.8945ZM8.30078 5.13184L7.26855 6.17773C8.08203 6.25293 8.66309 6.51953 9.08008 6.93652C10.2422 8.09863 10.2422 9.73242 9.08691 10.8809L6.81738 13.1504C5.66211 14.3057 4.03516 14.3057 2.87305 13.1504C1.71094 11.9883 1.71777 10.3545 2.87305 9.20605L4.04199 8.03027C3.83008 7.53125 3.75488 6.92969 3.87109 6.39648L1.91602 8.35156C0.234375 10.0264 0.227539 12.4121 1.92285 14.1074C3.61816 15.8027 5.99707 15.7891 7.67188 14.1143L10.0439 11.7354C11.7256 10.0537 11.7324 7.6748 10.0371 5.98633C9.64062 5.58301 9.10059 5.28223 8.30078 5.13184Z"></path></svg></span>URL</th></tr></thead><tbody><tr id="1b3afa01-3bb2-45f1-82f0-40348776abcf"><td class="cell-f}H}">1</td><td class="cell-title"><a href="https://www.notion.so/Function-WP_Scripts-print_inline_script-is-strong-deprecated-strong-since-version-6-3-0-Use-WP_-1b3afa013bb245f182f040348776abcf?pvs=21">Function WP_Scripts::print_inline_script is &lt;strong&gt;deprecated&lt;/strong&gt; since version 6.3.0! Use WP_Scripts::get_inline_script_data() or WP_Scripts::get_inline_script_tag() instead.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-green">Custom Theme : Code Update Required</span><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span><span class="selected-value select-value-color-red">Third Party Theme: Update Required</span></td><td class="cell-w}]k">204k</td><td class="cell-[dNh"><a href="https://onenr.io/0ERz4nLV8Qr" class="url-value">https://onenr.io/0ERz4nLV8Qr</a></td></tr><tr id="b410432b-e3b9-4722-8668-bcdff2fdd4cd"><td class="cell-f}H}">2</td><td class="cell-title"><a href="https://www.notion.so/Function-The-woocommerce_stock_html-filter-is-strong-deprecated-strong-since-version-Use-woocom-b410432be3b947228668bcdff2fdd4cd?pvs=21">Function The woocommerce_stock_html filter is &lt;strong&gt;deprecated&lt;/strong&gt; since version ! Use woocommerce_get_stock_html instead.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-green">Custom Theme : Code Update Required</span><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">2.6k</td><td class="cell-[dNh"><a href="https://onenr.io/0LRElOvBrwa" class="url-value">https://onenr.io/0LRElOvBrwa</a></td></tr><tr id="514eb81f-263b-41e0-809c-91f7defab9fd"><td class="cell-f}H}">3</td><td class="cell-title"><a href="https://www.notion.so/Function-WC_Subscriptions_Order-order_contains_subscription-is-strong-deprecated-strong-since-ve-514eb81f263b41e0809c91f7defab9fd?pvs=21">Function WC_Subscriptions_Order::order_contains_subscription is &lt;strong&gt;deprecated&lt;/strong&gt; since version 2.0! Use wcs_order_contains_subscription( $order ) instead.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">1.24k</td><td class="cell-[dNh"><a href="https://onenr.io/08woZOqDqQx" class="url-value">https://onenr.io/08woZOqDqQx</a></td></tr><tr id="cf2914ca-f359-4c10-8e6c-5a76f7e0874c"><td class="cell-f}H}">4</td><td class="cell-title"><a href="https://www.notion.so/Hook-woocommerce_resend_order_emails_available-is-strong-deprecated-strong-since-version-3-5-7-U-cf2914caf3594c108e6c5a76f7e0874c?pvs=21">Hook woocommerce_resend_order_emails_available is &lt;strong&gt;deprecated&lt;/strong&gt; since version 3.5.7! Use wpo_wcpdf_resend_order_emails_available instead.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-default">No action reqired</span></td><td class="cell-w}]k">698</td><td class="cell-[dNh"><a href="https://onenr.io/0vjA8xg2zRP" class="url-value">https://onenr.io/0vjA8xg2zRP</a></td></tr><tr id="e27b9f4a-28f3-47e0-8869-031bc4e5b8f2"><td class="cell-f}H}">5</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Failed-opening-required-wp-content-plugins-woocommerce-pa-e27b9f4a28f347e08869031bc4e5b8f2?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Failed opening required &#x27;/wp-content/plugins/woocommerce-paypal-payments/api/order-functions.php&#x27; (include_path=&#x27;.:/usr/share/pear/php:/usr/share/php&#x27;)&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/idealliving-import-connector-api/includes/class-wc-rest-custom-controller.php:6</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-default">No action reqired</span></td><td class="cell-w}]k">455</td><td class="cell-[dNh"><a href="https://onenr.io/0Bj3YxPlxwX" class="url-value">https://onenr.io/0Bj3YxPlxwX</a></td></tr><tr id="fadd2d58-5f77-4c7b-9f07-f62fc7d0e8d6"><td class="cell-f}H}">6</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-meta_exists-on-null-in-nas-co-fadd2d585f774c7b9f07f62fc7d0e8d6?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function meta_exists() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce/includes/class-wc-checkout.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-green">Custom Theme : Code Update Required</span></td><td class="cell-w}]k">397</td><td class="cell-[dNh"><a href="https://onenr.io/0VjYLdvZvR0" class="url-value">https://onenr.io/0VjYLdvZvR0</a></td></tr><tr id="b565d464-28d2-44c0-b633-f9de9381d6ea"><td class="cell-f}H}">7</td><td class="cell-title"><a href="https://www.notion.so/Function-WC_Abstract_Legacy_Order-get_product_from_item-is-strong-deprecated-strong-since-versio-b565d46428d244c0b633f9de9381d6ea?pvs=21">Function WC_Abstract_Legacy_Order::get_product_from_item is &lt;strong&gt;deprecated&lt;/strong&gt; since version 4.4.0! Use $item-&gt;get_product() instead.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-red">Third Party Theme: Update Required</span></td><td class="cell-w}]k">331</td><td class="cell-[dNh"><a href="https://onenr.io/0qQaxgOE0j1" class="url-value">https://onenr.io/0qQaxgOE0j1</a></td></tr><tr id="b5e92b6f-6afe-4368-ae67-37d8ecc97fe6"><td class="cell-f}H}">8</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-method-Automattic-WooCommerce-Admin-Overr-b5e92b6f6afe4368ae6737d8ecc97fe6?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined method Automattic\WooCommerce\Admin\Overrides\Order::wp_get_post_parent_id()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-il-reporting/includes/functions.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">330</td><td class="cell-[dNh"><a href="https://onenr.io/0qwLkMBJpQ5" class="url-value">https://onenr.io/0qwLkMBJpQ5</a></td></tr><tr id="627a3e53-8a56-46d2-86ce-80ee49596ce8"><td class="cell-f}H}">9</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-function-get_header-in-nas-content-li-627a3e538a5646d286ce80ee49596ce8?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined function get_header()&#x27; in /nas/content/live/buyrotorazer/wp-content/themes/flatsome/index.php:8</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-red">Third Party Theme: Update Required</span></td><td class="cell-w}]k">179</td><td class="cell-[dNh"><a href="https://onenr.io/02R5xq3PLwb" class="url-value">https://onenr.io/02R5xq3PLwb</a></td></tr><tr id="36efe157-972f-4150-8b21-0f366ef3c32b"><td class="cell-f}H}">10</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Undefined-constant-ABSPATH-in-nas-content-live-buyrotor-36efe157972f41508b210f366ef3c32b?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Undefined constant &quot;ABSPATH&quot;&#x27; in /nas/content/live/buyrotorazer/wp-includes/blocks/index.php:8</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-default">No action reqired</span></td><td class="cell-w}]k">151</td><td class="cell-[dNh"><a href="https://onenr.io/02R5xq3B1wb" class="url-value">https://onenr.io/02R5xq3B1wb</a></td></tr><tr id="580d1ca2-a255-40a8-b6eb-84e0466ca9df"><td class="cell-f}H}">11</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Failed-opening-required-nas-content-live-buyrotorazer-wp--580d1ca2a25540a8b6eb84e0466ca9df?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Failed opening required &#x27;/nas/content/live/buyrotorazer/wp-content/themes/flatsome-child/inc/refund_predefined_options.php&#x27; (include_path=&#x27;.:/usr/share/pear/php:/usr/share/php&#x27;)&#x27; in /nas/content/live/buyrotorazer/wp-content/themes/flatsome-child/functions.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">77</td><td class="cell-[dNh"><a href="https://onenr.io/0qQaxgOA6j1" class="url-value">https://onenr.io/0qQaxgOA6j1</a></td></tr><tr id="2deb7d02-7f78-4713-9def-f58f15101111"><td class="cell-f}H}">12</td><td class="cell-title"><a href="https://www.notion.so/Function-wpdb-escape-is-strong-deprecated-strong-since-version-3-6-0-Use-wpdb-prepare-or-esc-2deb7d027f7847139deff58f15101111?pvs=21">Function wpdb::escape is &lt;strong&gt;deprecated&lt;/strong&gt; since version 3.6.0! Use wpdb::prepare() or esc_sql() instead.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-orange">Insuffecient information on New Relic</span></td><td class="cell-w}]k">57</td><td class="cell-[dNh"><a href="https://onenr.io/0BQrdeE26RZ" class="url-value">https://onenr.io/0BQrdeE26RZ</a></td></tr><tr id="e9af6c8c-c217-4242-8ea7-211545041d1a"><td class="cell-f}H}">13</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Failed-opening-required-nas-content-live-buyrotorazer-wp--e9af6c8cc21742428ea7211545041d1a?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Failed opening required &#x27;/nas/content/live/buyrotorazer/wp-content/themes/flatsome-child/inc/ off_orderstatusfor_zenagent.php&#x27; (include_path=&#x27;.:/usr/share/pear/php:/usr/share/php&#x27;)&#x27; in /nas/content/live/buyrotorazer/wp-content/themes/flatsome-child/functions.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-green">Custom Theme : Code Update Required</span></td><td class="cell-w}]k">27</td><td class="cell-[dNh"><a href="https://onenr.io/0bRK2o5BlwE" class="url-value">https://onenr.io/0bRK2o5BlwE</a></td></tr><tr id="617ff3b7-e1c4-467c-8f31-c12e9be40b6a"><td class="cell-f}H}">14</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-set_props-on-null-in-nas-cont-617ff3b7e1c4467c8f31c12e9be40b6a?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function set_props() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/themes/flatsome-spanish-child/functions.php:316</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-green">Custom Theme : Code Update Required</span></td><td class="cell-w}]k">18</td><td class="cell-[dNh"><a href="https://onenr.io/0qwLkMKd3Q5" class="url-value">https://onenr.io/0qwLkMKd3Q5</a></td></tr><tr id="c2fbe785-319c-4efa-bcd3-50b015abd4af"><td class="cell-f}H}">15</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-get_id-on-bool-in-nas-content-c2fbe785319c4efabcd350b015abd4af?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function get_id() on bool&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woo-product-variation-gallery/app/Helpers/Functions.php:248</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-red">Third Party Theme: Update Required</span></td><td class="cell-w}]k">17</td><td class="cell-[dNh"><a href="https://onenr.io/0BR6n7Wa2RO" class="url-value">https://onenr.io/0BR6n7Wa2RO</a></td></tr><tr id="7d900442-aa48-47f7-89d3-8e6c45164f6d"><td class="cell-f}H}">16</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-backorders_allowed-on-bool-in--7d900442aa4847f789d38e6c45164f6d?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function backorders_allowed() on bool&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woo-backorder-manager-pro/woo-backorder-manager-pro.php:401</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-red">Third Party Theme: Update Required</span></td><td class="cell-w}]k">16</td><td class="cell-[dNh"><a href="https://onenr.io/0ERPAdzJljW" class="url-value">https://onenr.io/0ERPAdzJljW</a></td></tr><tr id="b0c5f91c-e5e0-4208-9353-0aaef8bc0071"><td class="cell-f}H}">17</td><td class="cell-title"><a href="https://www.notion.so/Hook-woocommerce_before_cart_item_quantity_zero-is-strong-deprecated-strong-since-version-3-7-0--b0c5f91ce5e0420893530aaef8bc0071?pvs=21">Hook woocommerce_before_cart_item_quantity_zero is &lt;strong&gt;deprecated&lt;/strong&gt; since version 3.7.0! Use woocommerce_remove_cart_item instead.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-orange">Insuffecient information on New Relic</span></td><td class="cell-w}]k">15</td><td class="cell-[dNh"><a href="https://onenr.io/0bRK2oDopwE" class="url-value">https://onenr.io/0bRK2oDopwE</a></td></tr><tr id="3594f870-61a5-4985-bb48-4107b81113f5"><td class="cell-f}H}">18</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-get_edit_order_url-on-bool-in--3594f87061a54985bb484107b81113f5?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function get_edit_order_url() on bool&#x27; in /nas/content/live/buyrotorazer/wp-content/themes/flatsome-child/inc/child_order_relation.php:68</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">13</td><td class="cell-[dNh"><a href="https://onenr.io/0nQx1aEzdwV" class="url-value">https://onenr.io/0nQx1aEzdwV</a></td></tr><tr id="ecc75083-aa97-4300-ac79-17aa97b6f4e7"><td class="cell-f}H}">19</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-get_payment_method-on-bool-in--ecc75083aa974300ac7917aa97b6f4e7?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function get_payment_method() on bool&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/idealliving-multipay/admin/class-idealliving-multipay-admin.php:121</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">13</td><td class="cell-[dNh"><a href="https://onenr.io/00jlZnB4YwW" class="url-value">https://onenr.io/00jlZnB4YwW</a></td></tr><tr id="1c546f7d-82d9-4adf-b479-890df124fd61"><td class="cell-f}H}">20</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-get_id-on-null-in-nas-content-1c546f7d82d94adfb479890df124fd61?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function get_id() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-chained-products/includes/class-wc-chained-products.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">10</td><td class="cell-[dNh"><a href="https://onenr.io/0BQrdeak3RZ" class="url-value">https://onenr.io/0BQrdeak3RZ</a></td></tr><tr id="bd85bbb0-53da-4581-ac82-ec8689845003"><td class="cell-f}H}">21</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-process_payment-on-null-in-na-bd85bbb053da4581ac82ec8689845003?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function process_payment() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-one-click-upsell-funnel-pro/public/class-woocommerce-one-click-upsell-funnel-pro-public.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">7</td><td class="cell-[dNh"><a href="https://onenr.io/0BQ1zYWEKwx" class="url-value">https://onenr.io/0BQ1zYWEKwx</a></td></tr><tr id="40348b35-20bf-451e-a5a5-f50920ac79c2"><td class="cell-f}H}">22</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-update_status-on-bool-in-nas--40348b3520bf451ea5a5f50920ac79c2?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function update_status() on bool&#x27; in /nas/content/live/buyrotorazer/1.php:85</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">7</td><td class="cell-[dNh"><a href="https://onenr.io/0bRmZqpBnjy" class="url-value">https://onenr.io/0bRmZqpBnjy</a></td></tr><tr id="6346d6db-d47d-476f-92f7-b9f77a616919"><td class="cell-f}H}">23</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-set-on-null-in-nas-content-li-6346d6dbd47d476f92f7b9f77a616919?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function set() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-paypal-payments/modules/ppcp-session/src/SessionHandler.php:154</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">6</td><td class="cell-[dNh"><a href="https://onenr.io/0MR2NaWlYRY" class="url-value">https://onenr.io/0MR2NaWlYRY</a></td></tr><tr id="5d33e651-0ec5-49e6-8a84-4645b98ff7c6"><td class="cell-f}H}">24</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-get_id-on-null-in-nas-content-5d33e6510ec549e68a844645b98ff7c6?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function get_id() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/ideal-endpoint/script-code-extra.php:810</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">3</td><td class="cell-[dNh"><a href="https://onenr.io/0Bj3YxWo2wX" class="url-value">https://onenr.io/0Bj3YxWo2wX</a></td></tr><tr id="b84a879b-208a-4efe-be63-1d03b7a018d0"><td class="cell-f}H}">25</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-set_props-on-null-in-nas-cont-b84a879b208a4efebe631d03b7a018d0?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function set_props() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/themes/flatsome-spanish-child/functions.php:318</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-green">Custom Theme : Code Update Required</span></td><td class="cell-w}]k">3</td><td class="cell-[dNh"><a href="https://onenr.io/0Owv9M7yaQv" class="url-value">https://onenr.io/0Owv9M7yaQv</a></td></tr><tr id="b977acf6-8da6-40e8-9727-e3be62a36377"><td class="cell-f}H}">26</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Undefined-constant-BLOGUPLOADDIR-in-nas-content-live-bu-b977acf68da640e89727e3be62a36377?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Undefined constant &quot;BLOGUPLOADDIR&quot;&#x27; in /nas/content/live/buyrotorazer/wp-includes/ms-files.php:26</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-default">No action reqired</span></td><td class="cell-w}]k">3</td><td class="cell-[dNh"><a href="https://onenr.io/0VwgPgAKlRJ" class="url-value">https://onenr.io/0VwgPgAKlRJ</a></td></tr><tr id="061a60a7-0da4-4e79-8caf-2843942be11a"><td class="cell-f}H}">27</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Class-Wcap_TS_deactivate-not-found-in-nas-content-live--061a60a70da44e798caf2843942be11a?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Class &quot;Wcap_TS_deactivate&quot; not found&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-abandon-cart-pro/includes/wcap_all_component.php:59</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-red">Third Party Theme: Update Required</span></td><td class="cell-w}]k">3</td><td class="cell-[dNh"><a href="https://onenr.io/0MRNNdvb2Rn" class="url-value">https://onenr.io/0MRNNdvb2Rn</a></td></tr><tr id="ef5abd5a-ca85-465c-996e-705e4028a14f"><td class="cell-f}H}">28</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Failed-opening-required-nas-content-live-buyrotorazer-wp--ef5abd5aca85465c996e705e4028a14f?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Failed opening required &#x27;/nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-one-click-upsell-funnel-pro/public/class-woocommerce-one-click-upsell-funnel-pro-public.php&#x27; (include_path=&#x27;.:/usr/share/pear/php:/usr/share/php&#x27;)&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-one-click-upsell-funnel-pro/includes/class-woocommerce-one-click-upsell-funnel-pro.php:162</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-red">Third Party Theme: Update Required</span></td><td class="cell-w}]k">2</td><td class="cell-[dNh"><a href="https://onenr.io/0OQMpdGEOjG" class="url-value">https://onenr.io/0OQMpdGEOjG</a></td></tr><tr id="2f2f8d1c-a23e-4c66-870c-de242ea4eb2d"><td class="cell-f}H}">30</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-function-get_header-in-nas-content-li-2f2f8d1ca23e4c66870cde242ea4eb2d?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined function get_header()&#x27; in /nas/content/live/buyrotorazer/wp-content/themes/twentytwentyone/404.php:12</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-default">No action reqired</span></td><td class="cell-w}]k">2</td><td class="cell-[dNh"><a href="https://onenr.io/0gR7qO1YpQo" class="url-value">https://onenr.io/0gR7qO1YpQo</a></td></tr><tr id="ae19ce47-bba2-45e2-b69d-499bb7f16386"><td class="cell-f}H}">29</td><td class="cell-title"><a href="https://www.notion.so/La-funci-n-WP_Scripts-print_inline_script-ha-quedado-strong-obsoleta-strong-desde-la-versi-n-6-3-ae19ce47bba245e2b69d499bb7f16386?pvs=21">¡La función WP_Scripts::print_inline_script ha quedado &lt;strong&gt;obsoleta&lt;/strong&gt; desde la versión 6.3.0! Usa WP_Scripts::get_inline_script_data() or WP_Scripts::get_inline_script_tag() en su lugar.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-orange">Insuffecient information on New Relic</span></td><td class="cell-w}]k">2</td><td class="cell-[dNh"><a href="https://onenr.io/0bRmZqG2Zjy" class="url-value">https://onenr.io/0bRmZqG2Zjy</a></td></tr><tr id="70d6f66e-6bbc-480f-ae48-0f631885817e"><td class="cell-f}H}">31</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Undefined-constant-ABSPATH-in-nas-content-live-buyrotor-70d6f66e6bbc480fae480f631885817e?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Undefined constant &quot;ABSPATH&quot;&#x27; in /nas/content/live/buyrotorazer/wp-settings.php:33</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-brown">Custom Code</span></td><td class="cell-w}]k">2</td><td class="cell-[dNh"><a href="https://onenr.io/0kjn6544Jjo" class="url-value">https://onenr.io/0kjn6544Jjo</a></td></tr><tr id="19a52feb-2ccc-4e31-9b3a-44260d237b84"><td class="cell-f}H}">32</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-get-on-null-in-nas-content-li-19a52feb2ccc4e319b3a44260d237b84?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function get() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-paypal-payments/modules/ppcp-wc-gateway/src/Gateway/PayPalGateway.php:523</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">2</td><td class="cell-[dNh"><a href="https://onenr.io/00jlZn4JdwW" class="url-value">https://onenr.io/00jlZn4JdwW</a></td></tr><tr id="6f2b6e4e-c504-4ddb-a182-84bed77730e5"><td class="cell-f}H}">33</td><td class="cell-title"><a href="https://www.notion.so/Function-The-wc_add_to_cart_message-filter-is-strong-deprecated-strong-since-version-3-0-Use-wc_-6f2b6e4ec5044ddba18284bed77730e5?pvs=21">Function The wc_add_to_cart_message filter is &lt;strong&gt;deprecated&lt;/strong&gt; since version 3.0! Use wc_add_to_cart_message_html instead.</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-orange">Insuffecient information on New Relic</span></td><td class="cell-w}]k">2</td><td class="cell-[dNh"><a href="https://onenr.io/0BQrde45NRZ" class="url-value">https://onenr.io/0BQrde45NRZ</a></td></tr><tr id="f93f4922-a4ed-41d6-876e-7cb3bf8c500f"><td class="cell-f}H}">34</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Class-Idealliving_API_Admin-not-found-in-nas-content-li-f93f4922a4ed41d6876e7cb3bf8c500f?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Class &quot;Idealliving_API_Admin&quot; not found&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/idealliving-import-connector-api/includes/class-idealliving-import-connector-api.php:143</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">2</td><td class="cell-[dNh"><a href="https://onenr.io/0oR87EkB3wG" class="url-value">https://onenr.io/0oR87EkB3wG</a></td></tr><tr id="40fee59b-77d6-4764-9a7c-f4a22f974e0a"><td class="cell-f}H}">35</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-function-WooCommerce-PayPalCommerce-WcGat-40fee59b77d647649a7cf4a22f974e0a?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined function WooCommerce\PayPalCommerce\WcGateway\Gateway\wc_add_notice()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-paypal-payments/modules/ppcp-wc-gateway/src/Gateway/ProcessPaymentTrait.php:81</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">2</td><td class="cell-[dNh"><a href="https://onenr.io/0qQaxgWMVj1" class="url-value">https://onenr.io/0qQaxgWMVj1</a></td></tr><tr id="951e0843-e2bb-4e4a-a903-2a2d425087ac"><td class="cell-f}H}">36</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-method-WooCommerce-wc_add_notice-in--951e0843e2bb4e4aa9032a2d425087ac?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined method WooCommerce::wc_add_notice()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-paypal-payments/modules/ppcp-wc-gateway/src/Gateway/ProcessPaymentTrait.php:81</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0oR87EkmawG" class="url-value">https://onenr.io/0oR87EkmawG</a></td></tr><tr id="4cb9a376-f704-4846-b25f-a881111e1406"><td class="cell-f}H}">37</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-function-WooCommerce-PayPalCommerce-WcGat-4cb9a376f7044846b25fa881111e1406?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined function WooCommerce\PayPalCommerce\WcGateway\Gateway\wc_add_notice()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-paypal-payments/modules/ppcp-wc-gateway/src/Gateway/ProcessPaymentTrait.php:94</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0bRmZqG09jy" class="url-value">https://onenr.io/0bRmZqG09jy</a></td></tr><tr id="a9e8e229-df03-4aec-b689-b3c5145902c5"><td class="cell-f}H}">38</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-function-IDEALOrders-remove_actions-in-a9e8e229df034aecb689b3c5145902c5?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined function IDEALOrders\remove_actions()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/ideal-endpoint/processor.php:471</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0ERz4nvg8Qr" class="url-value">https://onenr.io/0ERz4nvg8Qr</a></td></tr><tr id="c6a07ebb-7797-4912-95d5-7f732aeda3a3"><td class="cell-f}H}">39</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-method-Automattic-WooCommerce-Admin-Overr-c6a07ebb7797491295d57f732aeda3a3?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined method Automattic\WooCommerce\Admin\Overrides\Order::get_currency_symbol()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/ideal-endpoint/script-code-extra.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0ERz4nvp8Qr" class="url-value">https://onenr.io/0ERz4nvp8Qr</a></td></tr><tr id="cd8de3c7-4f52-4763-9d49-d6a755dcea4e"><td class="cell-f}H}">40</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-function-get_mojo_site_version_kinsta_ord-cd8de3c74f5247639d49d6a755dcea4e?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined function get_mojo_site_version_kinsta_orders()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-il-reporting/includes/class-wc-rest-woocommerce-il-reporting-controller_api.php:143</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0ERPAdWn6jW" class="url-value">https://onenr.io/0ERPAdWn6jW</a></td></tr><tr id="83435566-7e91-4306-b985-a4e79f8a2883"><td class="cell-f}H}">41</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-function-ppcp_capture_order-in-nas-co-834355667e914306b985a4e79f8a2883?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined function ppcp_capture_order()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/idealliving-import-connector-api/includes/class-wc-rest-custom-controller.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0Owv9M8z1Qv" class="url-value">https://onenr.io/0Owv9M8z1Qv</a></td></tr><tr id="303a389f-3e68-4864-b800-ddc319f18ab5"><td class="cell-f}H}">42</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-a-member-function-get-on-null-in-nas-content-li-303a389f3e684864b800ddc319f18ab5?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to a member function get() on null&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce/includes/wc-notice-functions.php:80</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0PwJlmd2Oj7" class="url-value">https://onenr.io/0PwJlmd2Oj7</a></td></tr><tr id="5f8ce187-b23a-4775-9776-3b1e88538e28"><td class="cell-f}H}">43</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Object-of-class-stdClass-could-not-be-converted-to-string--5f8ce187b23a477597763b1e88538e28?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Object of class stdClass could not be converted to string&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/ideal-endpoint/script-code-extra.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0BQ1zYkDXwx" class="url-value">https://onenr.io/0BQ1zYkDXwx</a></td></tr><tr id="9706b6a4-d066-4858-a24c-51f80ac735ee"><td class="cell-f}H}">44</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Call-to-undefined-method-WooCommerce-PayPalCommerce-WcGatew-9706b6a4d0664858a24c51f80ac735ee?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Call to undefined method WooCommerce\PayPalCommerce\WcGateway\Gateway\PayPalGateway::ppcp_capture_order()&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/idealliving-import-connector-api/includes/class-wc-rest-custom-controller.php:&lt;NUMBER&gt;</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-purple">Custom Plugin : Needs Code Update</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0oQDl7JZDQy" class="url-value">https://onenr.io/0oQDl7JZDQy</a></td></tr><tr id="219bd7b9-58f9-46ff-8e6a-5dd793842b86"><td class="cell-f}H}">45</td><td class="cell-title"><a href="https://www.notion.so/Uncaught-exception-Error-with-message-Class-Woocommerce_Legacyscs_Api_Admin-not-found-in-nas--219bd7b958f946ff8e6a5dd793842b86?pvs=21">Uncaught exception &#x27;Error&#x27; with message &#x27;Class &quot;Woocommerce_Legacyscs_Api_Admin&quot; not found&#x27; in /nas/content/live/buyrotorazer/wp-content/plugins/woocommerce-legacyscs-api/includes/class-woocommerce-legacyscs-api.php:160</a></td><td class="cell-eGDI"><span class="selected-value select-value-color-blue">Third Party Plugin : Update Required</span></td><td class="cell-w}]k">1</td><td class="cell-[dNh"><a href="https://onenr.io/0MR2NakVpRY" class="url-value">https://onenr.io/0MR2NakVpRY</a></td></tr></tbody></table><br/><br/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
